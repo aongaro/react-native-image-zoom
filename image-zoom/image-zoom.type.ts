@@ -83,6 +83,11 @@ export interface PropsDefine extends ReactNative.ViewProperties {
     onDoubleClick?: ()=>void
 
     /**
+     * callback when pan/drag ends, returning pan/zoom (x,y) from the image's centre
+     */
+    onPanEnd?: (x?: number, y?: number)=>void
+
+    /**
      * 透传
      */
     others?: any
@@ -115,6 +120,9 @@ export class Props extends PropsGaea implements PropsDefine {
     responderRelease = ()=> {
     }
     onDoubleClick = ()=> {
+    }
+    onPanEnd = ()=> {
+
     }
 }
 

@@ -404,6 +404,8 @@ export default class ImageViewer extends React.Component<typings.PropsDefine, ty
                     clearTimeout(this.longPressTimeout)
                 }
 
+                this.props.onPanEnd(this.positionX, this.positionY);
+
 	              // 手势完成,如果是单个手指、距离上次按住只有预设秒、滑动距离小于预设值,认为是单击
 	              const stayTime = new Date().getTime() - this.lastTouchStartTime
 	              const moveDistance = Math.sqrt(gestureState.dx * gestureState.dx + gestureState.dy * gestureState.dy)
