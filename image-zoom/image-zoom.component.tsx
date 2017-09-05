@@ -187,6 +187,8 @@ export default class ImageViewer extends React.Component<typings.PropsDefine, ty
                     }
 
                     if (this.props.panToMove) {
+                        if(this.props.onMoveStart)
+                            this.props.onMoveStart();
                         // diffX > 0 表示手往右滑，图往左移动，反之同理
                         // horizontalWholeOuterCounter > 0 表示溢出在左侧，反之在右侧，绝对值越大溢出越多
                         if (this.props.imageWidth * this.scale > this.props.cropWidth) { // 如果图片宽度大图盒子宽度， 可以横向拖拽
@@ -275,6 +277,8 @@ export default class ImageViewer extends React.Component<typings.PropsDefine, ty
                     }
 
                     if (this.props.pinchToZoom) {
+                        if(this.props.onMoveStart)
+                            this.props.onMoveStart();
                         // 找最小的 x 和最大的 x
                         let minX: number
                         let maxX: number
@@ -403,8 +407,8 @@ export default class ImageViewer extends React.Component<typings.PropsDefine, ty
                 if (this.longPressTimeout) {
                     clearTimeout(this.longPressTimeout)
                 }
-
-                this.props.onPanEnd(this.positionX, this.positionY);
+                if(this.props.onPanEnd)
+                    this.props.onPanEnd(this.positionX, this.positionY);
 
 	              // 手势完成,如果是单个手指、距离上次按住只有预设秒、滑动距离小于预设值,认为是单击
 	              const stayTime = new Date().getTime() - this.lastTouchStartTime

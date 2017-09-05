@@ -88,6 +88,11 @@ export interface PropsDefine extends ReactNative.ViewProperties {
     onPanEnd?: (x?: number, y?: number)=>void
 
     /**
+     * callback when pan/rag/pinch starts
+     */
+    onMoveStart?: ()=>void
+
+    /**
      * 透传
      */
     others?: any
@@ -122,6 +127,9 @@ export class Props extends PropsGaea implements PropsDefine {
     onDoubleClick = ()=> {
     }
     onPanEnd = ()=> {
+
+    }
+    onMoveStart = ()=> {
 
     }
 }
